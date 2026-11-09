@@ -471,262 +471,154 @@ section,
     color: var(--accent);
 }
 
-.form-card {
-    max-width: 760px;
-    margin: 0 auto;
+.fee-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.fee-calculator,
+.fee-summary {
     background: var(--panel-alt);
     border: 1px solid var(--line);
-    border-radius: 20px;
+    border-radius: 22px;
     padding: 28px;
     box-shadow: var(--shadow);
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--muted);
-    font-weight: 700;
-}
-
-input,
-textarea,
-select {
-    width: 100%;
-    border: 1px solid rgba(217, 255, 92, 0.18);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--text);
-    padding: 12px 14px;
-    font-size: 1rem;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    outline: 2px solid rgba(217, 255, 92, 0.25);
-    border-color: rgba(217, 255, 92, 0.45);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 140px;
-}
-
-.form-grid .full {
-    grid-column: 1 / -1;
-}
-
-.submit-btn {
-    margin-top: 18px;
-    display: inline-block;
-    border: none;
-    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-    color: #071108;
-    padding: 13px 22px;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.footer {
-    text-align: center;
-    padding: 24px 20px 36px;
-    color: var(--muted);
-    border-top: 1px solid var(--line);
-    background: rgba(7, 11, 13, 0.9);
-}
-
-.hero-logo {
-    display: block;
-    width: min(260px, 55vw);
-    height: auto;
-    margin: 0 auto 18px;
-    filter: drop-shadow(0 0 18px rgba(217, 255, 92, 0.35));
-}
-
-.booking-section {
-    margin-top: 40px;
-}
-
-.booking-card {
-    background: var(--panel-alt);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 28px;
-    box-shadow: var(--shadow);
-}
-
-.booking-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    margin-bottom: 28px;
-}
-
-.booking-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
-
-.booking-item input[type="checkbox"] {
-    display: none;
-}
-
-.booking-item {
-    position: relative;
-}
-
-.booking-label {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    cursor: pointer;
-    margin: 0;
-    padding: 16px 14px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 2px solid var(--line);
-    border-radius: 14px;
-    transition: 0.25s ease;
-}
-
-.pkg-checkbox:checked + .booking-label {
-    background: var(--accent-soft);
-    border-color: var(--accent);
-    box-shadow: 0 0 14px rgba(217, 255, 92, 0.3);
-}
-
-.booking-label:hover {
-    border-color: rgba(217, 255, 92, 0.5);
-}
-
-.pkg-name {
-    color: var(--text);
-    font-weight: 700;
-    font-size: 1rem;
-}
-
-.pkg-price {
+.fee-section-title {
+    margin: 0 0 18px;
+    font-size: 1.2rem;
     color: var(--accent);
-    font-weight: 700;
-    font-size: 1.1rem;
 }
 
-.booking-summary {
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.option-group {
+    margin-bottom: 22px;
 }
 
-.summary-row {
+.option-group h4 {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.product-grid {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.product-option {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.product-main {
     display: flex;
     justify-content: space-between;
+    gap: 16px;
     align-items: center;
-    color: var(--muted);
-    font-size: 1rem;
 }
 
-.summary-total {
-    border-top: 1px solid var(--line);
-    padding-top: 12px;
-    font-size: 1.2rem;
-    font-weight: 800;
+.product-name {
+    display: block;
+    margin-bottom: 4px;
     color: var(--text);
-}
-
-#book-btn {
-    margin-top: 8px;
-}
-
-.welcome-box {
-    margin: 0 auto 22px;
-    padding: 12px 18px;
-    display: inline-block;
-    border: 1px solid rgba(217, 255, 92, 0.25);
-    border-radius: 999px;
-    background: rgba(217, 255, 92, 0.06);
-    box-shadow: 0 0 18px rgba(217, 255, 92, 0.12);
-}
-
-.welcome-box p {
-    margin: 0;
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 0.04em;
     font-size: 1.05rem;
 }
 
-.mission-header {
-    margin-bottom: 18px;
+.product-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
 }
 
-.mission-header p {
+.product-price {
+    font-weight: 800;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.product-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.check-row,
+.qty-row {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.product-check {
+    width: auto;
+    accent-color: var(--accent);
+    margin-right: 8px;
+}
+
+.product-qty {
+    width: 70px;
+    margin-left: 8px;
+}
+
+.delivery-box {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0;
+    display: grid;
+    gap: 12px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(191, 255, 72, 0.1);
+    color: var(--muted);
+}
+
+.summary-item strong,
+.summary-total strong {
     color: var(--text);
     font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.82rem;
 }
 
-.feature-banner-copy {
+.summary-total {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    min-height: 100%;
-}
-
-.feature-banner-copy p {
-    line-height: 1.8;
-}
-
-.feature-banner-copy b {
-    display: block;
-    margin-top: 14px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
     color: var(--accent);
-}
-
-.cart-btn {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 42px;
-    min-height: 42px;
-    padding: 8px 10px;
-}
-
-.cart-btn .cart-badge {
-    position: absolute;
-    top: -7px;
-    right: -7px;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 5px;
-    border-radius: 999px;
-    background: var(--accent);
-    color: #071108;
-    font-size: 0.7rem;
     font-weight: 800;
-    line-height: 18px;
-    text-align: center;
-    box-shadow: 0 0 14px rgba(217, 255, 92, 0.55);
 }
 
-.cart-btn svg {
-    display: block;
+.muted-note {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
 }
 
-.cart-btn #cart-badge {
-    margin-left: 6px;
-    font-weight: 800;
+.full-width {
+    width: 100%;
+    margin-top: 18px;
 }
 
 @media (max-width: 800px) {
@@ -777,6 +669,21 @@ textarea {
 
     .welcome-box p {
         font-size: 0.95rem;
+    }
+
+    .fee-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .fee-calculator,
+    .fee-summary {
+        padding: 20px;
+    }
+
+    .product-main,
+    .product-controls {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 

@@ -1,0 +1,25 @@
+{
+  "name": "gaming-website",
+  "version": "1.0.0",
+  "description": "A dark-themed gaming brand website for Next LvL Gaming, featuring a storefront, product pages, contact and enquiry flows, founder story, and account/cart interactions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J5Molapo/NextLVL_Gaming-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/J5Molapo/NextLVL_Gaming-Website/issues"
+  },
+  "homepage": "https://github.com/J5Molapo/NextLVL_Gaming-Website#readme",
+  "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.0"
+  }
+}
