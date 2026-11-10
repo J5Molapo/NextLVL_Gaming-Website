@@ -242,3 +242,36 @@ body.bg-image, body.site-background, body.site-bg { background-image: linear-gra
         letter-spacing: 0.01em;
     }
 }
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]),
+select,
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 14px;
+  color: #f4f9ef;
+  font: inherit;
+  background: rgba(7, 11, 13, 0.78);
+  border: 1px solid rgba(217, 255, 92, 0.25);
+  border-radius: 12px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(213, 232, 208, 0.65);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #d9ff5c;
+  box-shadow: 0 0 0 3px rgba(217, 255, 92, 0.18);
+}
