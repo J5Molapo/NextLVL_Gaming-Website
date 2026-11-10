@@ -1,0 +1,109 @@
+/* Enquiry form styles, scoped to this page to avoid changing other forms. */
+.enquiry-page .section-header {
+    margin-bottom: 30px;
+}
+
+.enquiry-page .enquiry-fees-link {
+    margin-top: 16px;
+}
+
+.enquiry-page .form-card {
+    width: min(820px, 100%);
+    margin: 0 auto;
+    padding: 32px;
+    background: var(--panel-alt);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+}
+
+.enquiry-page .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.enquiry-page .form-grid > div {
+    min-width: 0;
+}
+
+.enquiry-page .form-grid > .full {
+    grid-column: 1 / -1;
+}
+
+.enquiry-page label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.enquiry-page input,
+.enquiry-page select,
+.enquiry-page textarea {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    color: var(--text);
+    font: inherit;
+    background: rgba(7, 11, 13, 0.72);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.enquiry-page select {
+    color-scheme: dark;
+}
+
+.enquiry-page textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.enquiry-page input::placeholder,
+.enquiry-page textarea::placeholder {
+    color: rgba(213, 232, 208, 0.65);
+}
+
+.enquiry-page input:focus,
+.enquiry-page select:focus,
+.enquiry-page textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(217, 255, 92, 0.14);
+}
+
+.enquiry-page .submit-btn {
+    margin-top: 22px;
+}
+
+.enquiry-page .enquiry-image {
+    max-width: 100%;
+    margin-top: 24px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+}
+
+@media (max-width: 800px) {
+    .enquiry-page .form-card {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 560px) {
+    .enquiry-page .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .enquiry-page .form-grid > .full {
+        grid-column: auto;
+    }
+
+    .enquiry-page .form-card {
+        padding: 20px;
+        border-radius: 18px;
+    }
+}
