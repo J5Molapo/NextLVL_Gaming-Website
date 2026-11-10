@@ -40,10 +40,12 @@
 
     <script>
         const temp = JSON.parse(localStorage.getItem('tempSignUp') || '{}');
+
         function getAccounts(){
             try { return JSON.parse(localStorage.getItem('accounts') || '[]'); } catch { return []; }
         }
-        function normalizeAccount(account){
+
+        function normalizeAccount(account = {}){
             return {
                 ...account,
                 password: account.password || '',
@@ -52,6 +54,7 @@
                 cards: Array.isArray(account.cards) ? account.cards : []
             };
         }
+
         function storeAccount(account){
             const normalized = normalizeAccount(account);
             const accounts = getAccounts();
@@ -67,12 +70,24 @@
             }
             localStorage.setItem('accounts', JSON.stringify(accounts));
         }
+
+        function rememberUser(user){
+            const remembered = {
+                email: user.email || '',
+                phone: user.phone || '',
+                username: user.username || ''
+            };
+            localStorage.setItem('rememberedUser', JSON.stringify(remembered));
+        }
+
         document.getElementById('username-form').addEventListener('submit', (e) => {
             e.preventDefault();
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
+
             if (!username) return alert('Please choose a username');
             if (!password) return alert('Please create a password');
+
             const user = {};
             if (temp.method === 'email') user.email = temp.contact;
             if (temp.method === 'phone') user.phone = temp.contact;
@@ -81,18 +96,26 @@
             user.orders = [];
             user.tickets = [];
             user.cards = [];
+
             storeAccount(user);
             localStorage.setItem('currentUser', JSON.stringify(user));
             localStorage.setItem('accountCreated', 'true');
             localStorage.setItem('showSignUpButton', 'true');
+            rememberUser(user);
+
             localStorage.removeItem('tempSignUp');
             localStorage.removeItem('orders');
             localStorage.removeItem('tickets');
             localStorage.removeItem('cards');
             localStorage.removeItem('lastOrder');
+
             const after = localStorage.getItem('afterLoginGoto');
-            if (after) { localStorage.removeItem('afterLoginGoto'); window.location.href = after; }
-            else window.location.href = 'profile.html';
+            if (after) {
+                localStorage.removeItem('afterLoginGoto');
+                window.location.href = after;
+            } else {
+                window.location.href = 'profile.html';
+            }
         });
     </script>
 </body>
