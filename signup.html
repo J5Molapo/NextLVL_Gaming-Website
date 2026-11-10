@@ -32,7 +32,7 @@
 
                     <div id="contact-field" class="full" style="margin-top:12px;">
                         <label id="contact-label" for="contact">Email</label>
-                        <input id="contact" type="text" placeholder="you@example.com" required>
+                        <input id="contact" type="email" autocomplete="email" placeholder="you@example.com" required>
                     </div>
 
                     <button type="submit" class="submit-btn">Continue</button>
@@ -107,25 +107,63 @@
         const contactLabel = document.getElementById('contact-label');
         const contactField = document.getElementById('contact');
 
+        function normalizePhoneNumber(value){
+            const compact = value.trim().replace(/[\s()-]/g, '');
+            if (/^0\d{9}$/.test(compact)) return `+27${compact.slice(1)}`;
+            if (/^\+27\d{9}$/.test(compact)) return compact;
+            return null;
+        }
+
+        function updateContactValidation(){
+            if (method.value === 'phone' && contactField.value.trim()) {
+                contactField.setCustomValidity(normalizePhoneNumber(contactField.value)
+                    ? ''
+                    : 'Enter a valid South African number, such as 082 000 0000 or +27 82 000 0000.');
+            } else {
+                contactField.setCustomValidity('');
+            }
+        }
+
         method.addEventListener('change', () => {
+            contactField.setCustomValidity('');
             if (method.value === 'email') {
                 contactLabel.textContent = 'Email';
                 contactField.placeholder = 'you@example.com';
                 contactField.type = 'email';
+                contactField.autocomplete = 'email';
+                contactField.inputMode = 'email';
             } else {
                 contactLabel.textContent = 'Phone';
                 contactField.placeholder = '+27 82 000 0000';
                 contactField.type = 'tel';
+                contactField.autocomplete = 'tel';
+                contactField.inputMode = 'tel';
             }
+            updateContactValidation();
         });
+
+        contactField.addEventListener('input', updateContactValidation);
 
         document.getElementById('signup-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            const contactValue = contactField.value.trim();
-            if (!contactValue) return alert('Please enter your contact.');
-            // save temporary signup info then ask for username
+            const enteredValue = contactField.value.trim();
+            if (!enteredValue) {
+                contactField.setCustomValidity('Please enter your contact.');
+                contactField.reportValidity();
+                return;
+            }
+
+            updateContactValidation();
+            if (!contactField.checkValidity()) {
+                contactField.reportValidity();
+                return;
+            }
+
+            const contactValue = method.value === 'email'
+                ? enteredValue.toLowerCase()
+                : normalizePhoneNumber(enteredValue);
+            // Save only a validated contact before asking for a username.
             localStorage.setItem('tempSignUp', JSON.stringify({ method: method.value, contact: contactValue }));
-            // show sign up button on index header after starting signup
             localStorage.setItem('showSignUpButton', 'true');
             window.location.href = 'create-username.html';
         });
